@@ -9,12 +9,12 @@ These dotfiles include configurations for the following tools:
 * **Window Manager:** Hyprland (with Hyprlock and Hypridle)
 * **Terminal:** Kitty
 * **Shell:** Zsh with Starship prompt
-* **Editor:** Neovim (configured with Lazy.nvim, Mason, and Telescope)
+* **Editor:** Neovim and Zed
 * **Bar:** Waybar
 * **Launcher:** Rofi
 * **File Manager:** Thunar & Yazi
 * **Theming:** Matugen (Material You color generation) & Waypaper (Wallpaper manager)
-* **System:** Wlogout, Bluetui, Pavucontrol, Btop
+* **System:** Wlogout, Bluetui, Impala, Pavucontrol
 
 ## Prerequisites
 
@@ -35,6 +35,7 @@ I have included a script to install all necessary packages (both official and AU
 
 2. Link Configuration Files
 Use GNU Stow to symlink the configurations to your home directory. This command links everything inside the directories while ignoring the scripts and this README file.
+You MUST remove all folders that may be already in place, for example, hyprland already autogeneatates ~/.config/hypr/hyprland.conf, if you try to Stow with that directory already created it won't work, just rename them to ~/.config/hypr_old or something like that
 ```bash
 stow */
 ```
@@ -57,15 +58,4 @@ Edit it to define your monitors (example):
 monitor=DP-1, 1920x1080@144, 0x0, 1
 ```
 
-## Structure
-hypr/: Hyprland configuration, including keybinds, shaders, and scripts.
-
-waybar/: Status bar configuration and styling.
-
-kitty/: Terminal emulator settings.
-
-nvim/: Neovim Lua configuration.
-
-rofi/: Application launcher themes and config.
-
-matugen/: Color generation templates for system-wide theming.
+You will have to setup zsh as default shell. As well as enabling pipewire, iwd and bluetooth.
