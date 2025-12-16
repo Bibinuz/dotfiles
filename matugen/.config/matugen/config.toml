@@ -1,0 +1,34 @@
+[config.wallpaper]
+set = false
+command = "swww"
+arguments = ["img"]
+
+[templates.hyprland]
+input_path = './templates/hyprland-colors.conf'
+output_path = '~/.config/hypr/colors.conf'
+
+[templates.kitty]
+input_path = './templates/kitty-colors.conf'
+output_path = '~/.config/kitty/colors.conf'
+
+[templates.rofi]
+input_path = './templates/rofi-colors.rasi'
+output_path = '~/.config/rofi/colors.rasi'
+
+[templates.waybar]
+input_path = './templates/colors.css'
+output_path = '~/.config/waybar/colors.css'
+
+[templates.wlogout]
+input_path = "./templates/colors.css" 
+output_path = "~/.config/wlogout/colors.css"
+
+[templates.starship]
+input_path = "./templates/starship.toml"
+output_path = "~/.config/starship.toml"
+
+[templates.zed]
+input_path = "./templates/zed-theme.json"
+output_path = "~/.config/zed/themes/colors.json"
+
+

@@ -1,0 +1,37 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "disable_ai": true,
+  "edit_predictions": {
+    "mode": "subtle"
+  },
+  "project_panel": {
+    "hide_hidden": true,
+    "hide_gitignore": true,
+    "default_width": 300.0
+  },
+  "ui_font_family": "JetBrainsMono Nerd Font Mono",
+  "buffer_font_family": "JetBrainsMono Nerd Font Mono",
+  "agent": {
+    "always_allow_tool_actions": true,
+    "default_profile": "ask",
+    "default_model": {
+      "provider": "google",
+      "model": "gemini-3-pro-preview"
+    },
+    "model_parameters": []
+  },
+  "icon_theme": "Catppuccin Frappé",
+  "vim_mode": true,
+  "ui_font_size": 20,
+  "buffer_font_size": 18,
+  "theme": "Fleet Dark",
+  "hidden_files": ["**/.*", "*.uid", "*.import", "shaders/"],
+  "relative_line_numbers": true
+}

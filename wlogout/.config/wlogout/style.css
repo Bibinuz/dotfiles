@@ -1,0 +1,73 @@
+@import "colors.css";
+
+* {
+    background-image: none;
+    font-family: "JetBrainsMono Nerd Font", "Noto Sans Nerd Font", sans-serif;
+    transition: 0.2s;
+}
+
+window {
+    background-color: rgba(12, 12, 12, 0.95);
+}
+
+grid {
+    /* Fallback color if import fails */
+    background-color: #2d2d2d; 
+    /* Use the variable if available */
+    background-color: @surface_container; 
+    
+    border-radius: 30px;
+    margin: 150px 300px;
+    padding: 20px;
+    box-shadow: none;
+}
+
+button {
+    /* Fallback colors (Dark background, Light text) */
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border: 2px solid #555555;
+
+    /* Actual Theme Colors */
+    background-color: @surface;
+    color: @on_surface;
+    border: 2px solid @outline_variant;
+
+    border-radius: 20px;
+    margin: 10px;
+    padding: 0px; 
+    
+    /* REMOVE OUTLINES/GLOWS */
+    outline-style: none;
+    text-shadow: none;
+    box-shadow: none;
+
+    font-size: 40px;
+    font-weight: bold;
+}
+
+button:hover {
+    /* Fallback Hover */
+    background-color: #d4be98;
+    color: #1e1e1e;
+
+    /* Theme Hover */
+    background-color: @primary;
+    color: @on_primary;
+    border-color: @primary;
+    animation: none;
+}
+
+/* Fix for "Lighter Lock": 
+   The first button (Lock) is often auto-focused. 
+   We make focus match hover so it doesn't look washed out.
+*/
+button:focus {
+    background-color: @primary;
+    color: @on_primary;
+    border-color: @primary;
+}
+
+#lock, #logout, #shutdown, #reboot, #suspend, #hibernate {
+    background-image: none;
+}

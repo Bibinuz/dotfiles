@@ -1,0 +1,132 @@
+{
+  "$schema": "https://zed.dev/schema/themes/v0.1.0.json",
+  "name": "Matugen",
+  "author": "Matugen",
+  "themes": [
+    {
+      "name": "Matugen",
+      "appearance": "dark",
+      "style": {
+        "border": "@{outline.hex}",
+        "border.variant": "@{outline_variant.hex}",
+        "border.focused": "@{primary.hex}",
+        "border.selected": "@{primary.hex}",
+        "border.transparent": "#00000000",
+        "border.disabled": "@{surface_variant.hex}",
+        "elevated_surface.background": "@{surface_container_high.hex}",
+        "surface.background": "@{surface.hex}",
+        "background": "@{surface.hex}",
+        "element.background": "@{surface_container.hex}",
+        "element.hover": "@{surface_container_highest.hex}",
+        "element.active": "@{primary.hex}",
+        "element.selected": "@{secondary_container.hex}",
+        "drop_target.background": "@{surface_container_highest.hex}",
+        "ghost_element.background": "#00000000",
+        "ghost_element.hover": "@{surface_container_highest.hex}",
+        "ghost_element.active": "@{secondary_container.hex}",
+        "ghost_element.selected": "@{secondary_container.hex}",
+        "text": "@{on_surface.hex}",
+        "text.muted": "@{on_surface_variant.hex}",
+        "text.placeholder": "@{outline.hex}",
+        "text.disabled": "@{outline.hex}",
+        "text.accent": "@{primary.hex}",
+        "icon": "@{on_surface.hex}",
+        "icon.muted": "@{on_surface_variant.hex}",
+        "icon.disabled": "@{outline.hex}",
+        "icon.placeholder": "@{outline.hex}",
+        "icon.accent": "@{primary.hex}",
+        "statusbar.background": "@{surface_container.hex}",
+        "title_bar.background": "@{surface.hex}",
+        "toolbar.background": "@{surface.hex}",
+        "tab_bar.background": "@{surface_container.hex}",
+        "tab.inactive_background": "@{surface_container.hex}",
+        "tab.active_background": "@{surface.hex}",
+        "search.match_background": "@{tertiary_container.hex}",
+        "panel.background": "@{surface_container.hex}",
+        "panel.focused_border": "@{primary.hex}",
+        "pane_group.border": "@{outline_variant.hex}",
+        "scrollbar.thumb.background": "@{outline_variant.hex}",
+        "scrollbar.thumb.hover_background": "@{outline.hex}",
+        "scrollbar.track.background": "@{surface.hex}",
+        "scrollbar.track.border": "#00000000",
+        "editor.foreground": "@{on_surface.hex}",
+        "editor.background": "@{surface.hex}",
+        "editor.gutter.background": "@{surface.hex}",
+        "editor.subheader.background": "@{surface_container.hex}",
+        "editor.active_line.background": "@{surface_container_highest.hex}",
+        "editor.highlighted_line.background": "@{surface_container_highest.hex}",
+        "editor.line_number": "@{outline.hex}",
+        "editor.active_line_number": "@{primary.hex}",
+        "editor.invisible": "@{outline_variant.hex}",
+        "editor.wrap_guide": "@{outline_variant.hex}",
+        "editor.active_wrap_guide": "@{outline.hex}",
+        "terminal.background": "@{surface.hex}",
+        "terminal.ansi.black": "@{surface_variant.hex}",
+        "terminal.ansi.red": "@{error.hex}",
+        "terminal.ansi.green": "@{tertiary.hex}",
+        "terminal.ansi.yellow": "@{secondary.hex}",
+        "terminal.ansi.blue": "@{primary.hex}",
+        "terminal.ansi.magenta": "@{tertiary.hex}",
+        "terminal.ansi.cyan": "@{secondary.hex}",
+        "terminal.ansi.white": "@{on_surface.hex}",
+        "terminal.ansi.bright_black": "@{outline.hex}",
+        "terminal.ansi.bright_red": "@{error.hex}",
+        "terminal.ansi.bright_green": "@{tertiary.hex}",
+        "terminal.ansi.bright_yellow": "@{secondary.hex}",
+        "terminal.ansi.bright_blue": "@{primary.hex}",
+        "terminal.ansi.bright_magenta": "@{tertiary.hex}",
+        "terminal.ansi.bright_cyan": "@{secondary.hex}",
+        "terminal.ansi.bright_white": "@{on_surface.hex}",
+        "syntax": {
+          "comment": {
+            "color": "@{outline.hex}",
+            "font_style": "italic"
+          },
+          "comment.doc": {
+            "color": "@{outline.hex}",
+            "font_style": "italic"
+          },
+          "constant": {
+            "color": "@{tertiary.hex}"
+          },
+          "entity": {
+            "color": "@{primary.hex}"
+          },
+          "keyword": {
+            "color": "@{secondary.hex}"
+          },
+          "string": {
+            "color": "@{tertiary.hex}"
+          },
+          "variable": {
+            "color": "@{on_surface.hex}"
+          },
+          "punctuation": {
+            "color": "@{outline.hex}"
+          },
+          "punctuation.bracket": {
+            "color": "@{outline.hex}"
+          },
+          "punctuation.delimiter": {
+            "color": "@{outline.hex}"
+          },
+          "operator": {
+            "color": "@{on_surface_variant.hex}"
+          },
+          "function": {
+            "color": "@{primary.hex}"
+          },
+          "tag": {
+            "color": "@{secondary.hex}"
+          },
+          "attribute": {
+            "color": "@{tertiary.hex}"
+          },
+          "type": {
+            "color": "@{secondary.hex}"
+          }
+        }
+      }
+    }
+  ]
+}
