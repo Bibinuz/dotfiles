@@ -18,25 +18,11 @@
   },
   "ui_font_family": "JetBrains Mono",
   "buffer_font_family": "JetBrains Mono",
-  "agent": {
-    "always_allow_tool_actions": true,
-    "default_profile": "ask",
-    "default_model": {
-      "provider": "google",
-      "model": "gemini-3-pro-preview"
-    },
-    "model_parameters": []
-  },
   "icon_theme": "Material Icon Theme",
   "vim_mode": true,
   "ui_font_size": 20,
   "buffer_font_size": 18,
-  "theme": "One Dark",
+  "theme": "Material Dark",
   "hidden_files": ["**/.*", "*.uid", "*.import", "shaders/"],
-  "relative_line_numbers": "enabled",
-  "languages": {
-    "GDScript": {
-      "use_autoclose": false
-    }
-  }
+  "relative_line_numbers": "enabled"
 }

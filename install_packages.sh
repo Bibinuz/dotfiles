@@ -13,9 +13,8 @@ packages_official=(
   zsh
   exa
   tmux
-  firefox
   zed
-  thunar
+  nautilus
   keepassxc
   starship
   steam
@@ -48,6 +47,9 @@ packages_aur=(
   ttf-font-awesome
   wlogout
   localsend
+  zen-browser-bin
+  xpadneo-dkms
+  aether
 )
 
 install_official() {
