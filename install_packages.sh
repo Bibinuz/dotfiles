@@ -33,8 +33,6 @@ packages_official=(
   hypridle
   hyprpicker
   ttf-jetbrains-mono
-  inter-font
-  ttf-noto-nerd
   dkms
   linux-headers
 )
@@ -47,7 +45,7 @@ packages_aur=(
   ttf-font-awesome
   wlogout
   localsend
-  zen-browser-bin
+  librewolf-bin
   xpadneo-dkms
   aether
 )
