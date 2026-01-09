@@ -45,7 +45,7 @@ packages_aur=(
   ttf-font-awesome
   wlogout
   localsend
-  librewolf-bin
+  waterfox-bin
   xpadneo-dkms
   aether
 )
