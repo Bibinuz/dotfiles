@@ -1,80 +1,61 @@
-# ~/.config/matugen/templates/starship.toml
+format = '''
+$os$directory$git_branch$git_status
+$character'''
 
-# 1. Global Format
-format = """
-$directory\
-$git_branch\
-$git_status\
-$c\
-$rust\
-$golang\
-$nodejs\
-$php\
-$java\
-$kotlin\
-$haskell\
-$python\
-$docker_context\
-$cmd_duration\
-$line_break\
-$character"""
+palette = 'colors'
 
-# 2. Palette (Optional: Define custom palettes if you prefer referencing names)
-# We will use inline styles with Matugen variables for simplicity.
+[palettes.colors]
+mustard = '#af8700'
+color1 = '{{colors.primary_fixed_dim.default.hex}}'
+color2 = '{{colors.on_primary.default.hex}}'
+color3 = '{{colors.on_surface_variant.default.hex}}'
+color4 = '{{colors.surface_container.default.hex}}'
+color5 = '{{colors.on_primary.default.hex}}'
+color6 = '{{colors.surface_dim.default.hex}}'
+color7 = '{{colors.surface.default.hex}}'
+color8 = '{{colors.primary.default.hex}}'
+color9 = '{{colors.tertiary.default.hex}}'
 
-# 3. Essential Modules
+[os]
+disabled = false
+format = "[$symbol](color8) "
 
-[directory]
-format = "[](@{primary.hex})[ $path ](bg:@{primary.hex} fg:@{on_primary.hex} bold)[](fg:@{primary.hex} bg:none) "
-truncation_length = 3
-truncate_to_repo = false
-
-[git_branch]
-format = "[](@{secondary.hex})[ $symbol$branch ](bg:@{secondary.hex} fg:@{on_secondary.hex} bold)[](fg:@{secondary.hex} bg:none) "
-symbol = " "
-
-[git_status]
-format = "[$all_status$ahead_behind]($style) "
-style = "bold @{tertiary.hex}"
-conflicted = "🏳"
-up_to_date = "✅"
-untracked = " "
-ahead = "⇡${count}"
-diverged = "⇕⇡${ahead_count}⇣${behind_count}"
-behind = "⇣${count}"
-staged = " "
-modified = " "
-deleted = " "
-renamed = " "
-
-# --- Language Runtimes (The "Essentials") ---
-
-[c]
-format = "[](@{tertiary.hex})[ $symbol($version) ](bg:@{tertiary.hex} fg:@{on_tertiary.hex} bold)[](fg:@{tertiary.hex} bg:none) "
-symbol = " "
-
-[rust]
-format = "[](@{tertiary.hex})[ $symbol($version) ](bg:@{tertiary.hex} fg:@{on_tertiary.hex} bold)[](fg:@{tertiary.hex} bg:none) "
-symbol = " "
-
-[golang]
-format = "[](@{tertiary.hex})[ $symbol($version) ](bg:@{tertiary.hex} fg:@{on_tertiary.hex} bold)[](fg:@{tertiary.hex} bg:none) "
-symbol = " "
-
-[nodejs]
-format = "[](@{tertiary.hex})[ $symbol($version) ](bg:@{tertiary.hex} fg:@{on_tertiary.hex} bold)[](fg:@{tertiary.hex} bg:none) "
-symbol = " "
-
-[python]
-format = "[](@{tertiary.hex})[ $symbol($version) ](bg:@{tertiary.hex} fg:@{on_tertiary.hex} bold)[](fg:@{tertiary.hex} bg:none) "
-symbol = " "
-
-# --- System & Status ---
-
-[cmd_duration]
-min_time = 2000
-format = "took [$duration](bold @{primary.hex}) "
+[os.symbols]
+Arch = " "
 
 [character]
-success_symbol = "[➜](bold @{primary.hex})"
-error_symbol = "[➜](bold @{error.hex})"
+success_symbol = "[❯](color8 bold) "
+error_symbol = "[❯](bold #f38ba8) "
+vicmd_symbol = "[❮](color9 bold) "
+
+[directory]
+format = "[󰉋 ](color1)[$path](color3 bold) "
+
+[directory.substitutions]
+"Documents" = " 󰈙 "
+"Downloads" = "  "
+"Music" = "  "
+"Pictures" = "  "
+"Godot" = "  "
+"hypr" = "  "
+".config" = " 󰒓 "
+"scripts" = "󱆃 "  
+"projects" = "󱂵 " 
+"vault" = "󰌾 "
+
+[git_branch]
+symbol = " "
+format = "on [$symbol$branch](color8) "
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]](color3) )'
+stashed = "≡"
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇕"
+renamed = "»"
+deleted = "✘"
+modified = "!"
+staged = "+"
+untracked = "?"
+conflicted = "="
