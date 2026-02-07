@@ -8,4 +8,5 @@ setopt inc_append_history
 
 autoload -U compinit && compinit
 
-alias ls="exa -l"
+alias ls="exa --icons="always" -l"
+alias lsa="exa --icons="always" -la"

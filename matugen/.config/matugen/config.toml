@@ -31,4 +31,9 @@ output_path = "~/.config/starship.toml"
 input_path = "./templates/zed-theme.json"
 output_path = "~/.config/zed/themes/colors.json"
 
+[templates.spicetify]
+input_path = '~/.config/matugen/templates/spotify-colors.ini'
+output_path = '~/.config/spicetify/Themes/text/color.ini'
+post_hook = '~/.config/matugen/spice.sh'
+
 
