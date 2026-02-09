@@ -38,9 +38,8 @@ packages_official=(
 )
 
 packages_aur=(
-  swww
+  awww
   matugen
-  waypaper
   hyprshot
   ttf-font-awesome
   wlogout

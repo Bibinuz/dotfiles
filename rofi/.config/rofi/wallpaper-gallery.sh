@@ -17,7 +17,7 @@ gen_list() {
 
 SELECTED=$(gen_list | rofi -dmenu \
     -p "Wallpaper" \
-    -display-columns 4 \
+    -display-columns 3 \
     -theme-str 'window { width: 50%; height: 60%; }' \
     -theme-str 'mainbox { children: [ "inputbar", "listview" ]; }' \
     -theme-str 'listview { columns: 4; lines: 3; spacing: 10px; padding: 10px; }' \
@@ -30,9 +30,9 @@ SELECTED=$(gen_list | rofi -dmenu \
 if [ -n "$SELECTED" ]; then
     FULL_PATH="$WALLPAPERS_DIR/$SELECTED"	
     
-    swww img "$FULL_PATH" --transition-type grow --transition-pos 0.9,0.9 --transition-step 90 --transition-fps 144
+    awww img "$FULL_PATH" --transition-type grow --transition-pos 0.9,0.9 --transition-step 90 --transition-fps 144
     cp "$FULL_PATH" "$PREVIEW_FILE"
-    notify-send "Wallpaper changed" "Applied: $@"
+    notify-send "Wallpaper changed" "Applied: $FULL_PATH"
  
     #Custom hooks
     matugen image "$FULL_PATH" >> /dev/null
