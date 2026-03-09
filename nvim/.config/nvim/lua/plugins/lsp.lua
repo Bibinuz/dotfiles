@@ -14,13 +14,12 @@ return {
           "clangd",
           "bashls",
           "html",
-          "cssls",
+	  "cssls",
         },
       })
 
-      local lspconfig = require("lspconfig")
 
-      lspconfig.lua_ls.setup({
+      vim.lsp.config('lua_ls', {
         settings = {
           Lua = {
             diagnostics = { globals = { "vim" } },
@@ -28,11 +27,16 @@ return {
         },
       })
 
-      lspconfig.pyright.setup({})
-      lspconfig.clangd.setup({})
-      lspconfig.bashls.setup({})
-      lspconfig.html.setup({})
-      lspconfig.cssls.setup({})
+      vim.lsp.config('cssls', {
+
+
+      })
+      vim.lsp.enable('pyright')
+      vim.lsp.enable('clangd')
+      vim.lsp.enable('bashls')
+      vim.lsp.enable('html')
+      vim.lsp.enable('cssls')
+
     end,
   },
 }
