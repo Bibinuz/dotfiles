@@ -36,11 +36,8 @@ format = "[󰉋 ](color1)[$path](color3 bold) "
 "Downloads" = "  "
 "Music" = "  "
 "Pictures" = "  "
-"Godot" = "  "
-"hypr" = "  "
 ".config" = " 󰒓 "
 "scripts" = "󱆃 "  
-"projects" = "󱂵 " 
 "vault" = "󰌾 "
 
 [git_branch]
