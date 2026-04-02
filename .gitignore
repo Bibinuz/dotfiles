@@ -1,2 +1,7 @@
 
 monitor.conf
+nohup.out
+*.log
+*.swp
+*~
+.DS_Store
