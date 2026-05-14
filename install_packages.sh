@@ -12,6 +12,7 @@ packages_official=(
 	ly
 	zsh
 	exa
+	nautilus
 	keepassxc
 	starship
 	steam
@@ -20,8 +21,7 @@ packages_official=(
 	bluez
 	bluez-utils
 	bluetui
-	iwd
-	impala
+	networkmanager
 	pipewire
 	pipewire-pulse
 	pavucontrol
@@ -36,11 +36,12 @@ packages_official=(
 	papirus-icon-theme
 	dkms
 	linux-headers
+	quickshell
+	matugen
 )
 
 packages_aur=(
 	awww
-	matugen
 	hyprshot
 	ttf-font-awesome
 	wlogout

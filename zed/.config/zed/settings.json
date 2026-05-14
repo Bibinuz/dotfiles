@@ -7,17 +7,71 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "vim": {
-    "toggle_relative_line_numbers": true
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry"
+    },
+    "gemini": {
+      "default_mode": "yolo",
+      "type": "registry"
+    }
   },
-  "disable_ai": true,
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
+  "agent": {
+    "dock": "right",
+    "default_model": {
+      "provider": "google",
+      "model": "gemini-3.1-pro-preview",
+      "enable_thinking": true
+    },
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "ssh_connections": [
+    {
+      "host": "wilma",
+      "args": [],
+      "projects": [
+        {
+          "paths": [
+            "/home/alumnos/cap/cap-2/Exercicis"
+          ]
+        }
+      ]
+    }
+  ],
+  "languages": {
+    "C++": {
+      "format_on_save": "on",
+      "preferred_line_length": 100,
+    },
+  },
+  "prettier": {
+    "allowed": true,
+  },
+  "vim": {
+    "toggle_relative_line_numbers": true,
+  },
+  "disable_ai": false,
   "edit_predictions": {
-    "mode": "subtle"
+    "open_ai_compatible_api": {
+      "api_url": ""
+    },
+    "mode": "subtle",
   },
   "project_panel": {
+    "dock": "left",
     "hide_hidden": true,
     "hide_gitignore": true,
-    "default_width": 300.0
+    "default_width": 300.0,
   },
   "ui_font_family": "JetBrains Mono",
   "buffer_font_family": "JetBrains Mono",
@@ -27,5 +81,5 @@
   "buffer_font_size": 18,
   "theme": "Catppuccin Mocha",
   "hidden_files": ["**/.*", "*.uid", "*.import", "shaders/"],
-  "relative_line_numbers": "enabled"
+  "relative_line_numbers": "enabled",
 }
