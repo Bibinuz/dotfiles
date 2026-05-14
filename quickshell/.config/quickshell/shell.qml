@@ -126,17 +126,6 @@ PanelWindow {
         anchor.rect.height: 0
     }
 
-    // ── Wifi Menu Popup ───────────────────────────────────────────────────────
-    WifiMenuPopup {
-        id: wifiMenuPopup
-        theme: theme
-        anchor.window: root
-        anchor.rect.x: root.width - 320 - 14
-        anchor.rect.y: 40
-        anchor.rect.width: 250
-        anchor.rect.height: 0
-    }
-
     // ── Auto Reload Watcher ───────────────────────────────────────────────────
     Process {
         command: ["sh", "-c", "inotifywait -q -m -e close_write ~/.config/quickshell/components/Colors.qml | while read -r line; do touch ~/.config/quickshell/shell.qml; done"]

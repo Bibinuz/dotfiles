@@ -49,6 +49,7 @@ packages_aur=(
 	waterfox-bin
 	xpadneo-dkms
 	aether
+	wlctl-bin
 )
 
 install_official() {

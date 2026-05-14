@@ -27,4 +27,15 @@ StatusChip {
         repeat: true
         onTriggered: wifiProc.running = true
     }
+
+    Process {
+        id: networkProcess
+        command: ["kitty", "--title", "wlctl", "-e", "wlctl"]
+    }
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            networkProcess.running = true
+        }
+    }
 }
