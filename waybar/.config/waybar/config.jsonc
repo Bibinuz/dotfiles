@@ -1,99 +1,116 @@
 {
   "layer": "top",
   "position": "top",
+  "height": 40,
+  "spacing": 0,
   "modules-left": [
     "hyprland/workspaces",
-    "hyprland/window"
+    "custom/separator1",
+    "hyprland/window",
   ],
-  "modules-center": [
-    "clock"
-  ],
+  "modules-center": ["clock#time", "custom/separator-clock", "clock#date"],
   "modules-right": [
+    "battery",
     "pulseaudio",
-    "backlight",
     "network",
     "bluetooth",
-    "battery",
-    "custom/power"
+    "custom/separator2",
+    "custom/power",
   ],
 
-  // --- Modules Configuration ---
-
   "hyprland/workspaces": {
-    "format": "{name}",
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "I",
+      "2": "II",
+      "3": "III",
+      "4": "IV",
+      "5": "V",
+      "6": "VI",
+      "7": "VII",
+      "8": "VIII",
+      "9": "IX",
+      "10": "X",
+      "default": "{name}",
+    },
     "on-click": "activate",
-    "sort-by-number": true
+    "sort-by-number": true,
+  },
+
+  "custom/separator1": {
+    "format": "|",
+    "tooltip": false,
   },
 
   "hyprland/window": {
-    "format": "{title}",
-    "max-length": 40,
-    "separate-outputs": true
+    "format": "●  {title}",
+    "max-length": 50,
+    "separate-outputs": true,
   },
 
-  "clock": {
-    "format": "{:%H:%M  •  %A, %d}",
-    "tooltip-format": "<tt><small>{calendar}</small></tt>",
-    "calendar": {
-      "mode": "year",
-      "mode-mon-col": 3,
-      "weeks-pos": "right",
-      "on-scroll": 1,
-      "format": {
-        "months": "<span color='#ffead3'><b>{}</b></span>",
-        "days": "<span color='#ecc6d9'><b>{}</b></span>",
-        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
-      }
-    }
+  "clock#time": {
+    "format": "{:%H:%M}",
+    "tooltip": false,
   },
 
-  "bluetooth": {
-    "format": "",
-    "format-connected": "󰂱",
-    "format-disabled": "󰂲",
-    "on-click": "kitty --title bluetui -e bluetui",
-    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
-    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}"
+  "custom/separator-clock": {
+    "format": "|",
+    "tooltip": false,
   },
 
-  "network": {
-    "format-wifi": " ",
-    "format-ethernet": "󰈀",
-    "format-disconnected": "󰤮",
-    "tooltip-format": "{essid} ({signalStrength}%)",
-    "on-click": "kitty --title impala -e impala"
-  },
-
-  "pulseaudio": {
-    "format": "{icon}   {volume}%",
-    "format-muted": "󰝟",
-    "format-icons": {
-      "default": ["", "", ""]
-    },
-    "on-click": "pavucontrol"
-  },
-
-  "backlight": {
-    "format": "{icon} {percent}%",
-    "format-icons": ["", "", "", "", "", "", "", "", ""]
+  "clock#date": {
+    "format": "{:%a %d %b}",
+    "tooltip": false,
   },
 
   "battery": {
     "states": {
-      "warning": 30,
-      "critical": 15
+      "warning": 20,
+      "critical": 10,
     },
-    "format": "{icon} {capacity}%",
-    "format-charging": "󰂄 {capacity}%",
+    "format": "{icon}   <span color='#dee3e5'><small>{capacity}%</small></span>",
+    "format-charging": "󰂄   <span color='#dee3e5'><small>{capacity}%</small></span>",
+    "format-plugged": "󰚥   <span color='#dee3e5'><small>AC</small></span>",
     "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-    "on-click": "kitty --title btop -e btop"
+    "on-click": "kitty --title btop -e btop",
+  },
+
+  "pulseaudio": {
+    "format": "{icon}   <span color='#dee3e5'><small>{volume}%</small></span>",
+    "format-muted": "󰖁   <span color='#dee3e5'><small>Muted</small></span>",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"],
+    },
+    "on-click": "pavucontrol",
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+  },
+
+  "network": {
+    "format-wifi": "󰖩   <span color='#dee3e5'><small>{essid}</small></span>",
+    "format-ethernet": "󰈀   <span color='#dee3e5'><small>Wired</small></span>",
+    "format-disconnected": "󰤮   <span color='#dee3e5'><small>Disconnected</small></span>",
+    "tooltip-format": "{essid} ({signalStrength}%)",
+    "on-click": "kitty --title wlctl -e wlctl",
+  },
+
+  "bluetooth": {
+    "format": "󰂯   <span color='#dee3e5'><small>On</small></span>",
+    "format-connected": "󰂯   <span color='#dee3e5'><small>{device_alias}</small></span>",
+    "format-disabled": "󰂲   <span color='#dee3e5'><small>Off</small></span>",
+    "on-click": "kitty --title bluetui -e bluetui",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected"
+  },
+
+  "custom/separator2": {
+    "format": "|",
+    "tooltip": false
   },
 
   "custom/power": {
-    "format": "⏻",
-    "tooltip": false,
-    "on-click": "wlogout"
+    "format": "󰐥",
+    "tooltip": "Power Menu",
+    "on-click": "pidof rofi && pkill rofi || ~/.config/rofi/powermenu.sh"
   }
 }

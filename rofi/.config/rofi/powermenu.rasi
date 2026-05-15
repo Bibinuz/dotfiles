@@ -1,0 +1,54 @@
+@import "colors.rasi"
+
+configuration {
+    show-icons: false;
+    font: "monospace 10";
+    hover-select: true;
+    me-select-entry: "MouseSecondary";
+    me-accept-entry: "MousePrimary";
+}
+
+window {
+    location: northeast;
+    anchor: northeast;
+    x-offset: -14px;
+    y-offset: 0px;
+    width: 170px;
+    border: 1px solid;
+    border-color: @outline-variant;
+    border-radius: 12px;
+    background-color: @surface-container-high;
+    padding: 6px;
+    children: [ listview ];
+}
+
+listview {
+    columns: 1;
+    lines: 5;
+    cycle: true;
+    dynamic: true;
+    scrollbar: false;
+    layout: vertical;
+    spacing: 4px;
+    background-color: transparent;
+}
+
+element {
+    padding: 8px 12px;
+    border-radius: 8px;
+    background-color: transparent;
+    text-color: @on-surface;
+    cursor: pointer;
+}
+
+element selected {
+    background-color: @primary;
+    text-color: @on-primary;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    cursor: inherit;
+    vertical-align: 0.5;
+}

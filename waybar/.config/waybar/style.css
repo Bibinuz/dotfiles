@@ -1,160 +1,177 @@
 @import "colors.css";
 
-/* --- Global Reset --- */
 * {
-  font-family: "Inter", "Symbols Nerd Font", sans-serif;
-  font-size: 12px;
-  font-weight: 600;
+    font-family: "monospace", "Symbols Nerd Font", sans-serif;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
 }
 
-/* --- The Bar Itself --- */
+button {
+    padding: 0;
+}
+
 window#waybar {
-  background-color: transparent;
-  color: @on_surface;
-  transition-property: background-color;
-  transition-duration: 0.5s;
+    background-color: alpha(@surface_container_lowest, 0.75);
+    border-bottom: 1px solid alpha(@outline_variant, 0.5);
+    color: @on_surface;
 }
 
-/* --- Module Groups (The Islands) --- */
+/* --- Container Resets --- */
 .modules-left,
 .modules-center,
 .modules-right {
-  background-color: @surface_container;
-  border: 1px solid @outline_variant;
-  padding: 2px 10px;
-  border-radius: 24px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
 }
 
 .modules-left {
-  margin-left: 10px;
+    margin-left: 14px;
 }
 
 .modules-right {
-  margin-right: 10px;
-  padding-left: 0;
-  padding-right: 0;
+    margin-right: 14px;
 }
 
-.modules-right > widget {
-  margin: 0;
-}
-
-.modules-right > widget:first-child > * {
-  margin-left: 10px;
-}
-
-.modules-right > widget:last-child > * {
-  margin-right: 10px;
-}
-
-/* --- Tooltips --- */
-tooltip {
-  background: @surface_container_highest;
-  border: 1px solid @outline;
-  border-radius: 12px;
-}
-tooltip label {
-  color: @on_surface;
-}
-
-/* --- WORKSPACES --- */
+/* --- Workspaces --- */
 #workspaces {
-  padding: 0px;
+    margin: 0;
+    padding: 0;
 }
 
 #workspaces button {
-  padding: 0px 2px;
-  margin: 0 3px;
-  background-color: transparent;
-  color: @on_surface_variant;
-  border-radius: 12px;
-  font-weight: bold;
-  transition: all 0.3s ease;
+    padding: 0 8px;
+    margin: 7px 2px;
+    border-radius: 14px;
+    color: @on_surface_variant;
+    background-color: @surface_container_high;
+    font-size: 12px;
+    transition: all 0.18s ease-out;
 }
 
-#workspaces button:hover {
-  background-color: @surface_bright;
-  color: @on_surface;
-  box-shadow: none;
+#workspaces button.empty {
+    color: alpha(@on_surface_variant, 0.5);
+    background-color: alpha(@surface_container, 0.5);
 }
 
 #workspaces button.active {
-  color: @background;
-  background-color: @primary;
-  min-width: 30px;
-  border-radius: 16px;
-
-  opacity: 1;
-  transition: all 0.3s ease;
+    min-width: 20px;
+    color: @on_primary;
+    background-color: @primary;
+    font-weight: bold;
 }
 
-/* --- WINDOW TITLE --- */
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+}
+
+/* --- Separators --- */
+#custom-separator1,
+#custom-separator2,
+#custom-separator-clock {
+    color: alpha(@outline_variant, 0.6);
+    font-size: 14px;
+    margin: 6px 8px;
+}
+
+#custom-separator2 {
+    margin: 6px 6px;
+    color: alpha(@outline_variant, 0.5);
+}
+
+#custom-separator-clock {
+    margin: 6px 6px;
+    color: alpha(@outline_variant, 0.7);
+}
+
+/* --- Active Window --- */
 #window {
-  color: @on_surface_variant;
-  padding-left: 10px;
-  padding-right: 10px;
-  opacity: 0.8;
+    color: @on_surface;
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
 }
 
-/* --- CLOCK --- */
-#clock {
-  color: @primary;
-  font-weight: 800;
-  padding: 0 10px;
+/* --- Clock --- */
+#clock.time {
+    color: @on_surface;
+    font-weight: bold;
+    font-size: 15px;
 }
 
-/* --- RIGHT MODULES (Hardware) --- */
-#pulseaudio,
-#backlight,
-#network,
-#bluetooth,
+#clock.date {
+    color: @on_surface_variant;
+    font-size: 12px;
+}
+
+/* --- Right Status Modules --- */
 #battery,
-#custom-power {
-  padding: 0 10px;
-  color: @on_surface;
-  border-radius: 12px;
-  margin: 4px 2px;
-  transition: background-color 0.2s;
+#pulseaudio,
+#network,
+#bluetooth {
+    padding: 0 6px;
+    margin: 4px 1px;
+    border-radius: 8px;
+    color: @primary;
+    background-color: transparent;
+    transition: background-color 0.12s;
+    font-size: 15px;
+    font-weight: 500;
 }
 
-/* Hover effects for interactive modules */
+#battery:hover,
 #pulseaudio:hover,
 #network:hover,
-#bluetooth:hover,
-#custom-power:hover {
-  background-color: @surface_variant;
-  color: @primary;
+#bluetooth:hover {
+    background-color: @surface_container;
 }
 
-/* --- Specific Colors based on state --- */
-
-#bluetooth.connected,
-#bluetooth.on {
-  color: @primary;
+#bluetooth.connected {
+    color: @tertiary;
 }
 
-#network.disconnected {
-  color: @error;
-}
-
-#pulseaudio.muted {
-  color: @on_surface_variant;
-}
-
+/* State-based colors replicating icon color logic when possible */
 #battery.charging {
-  color: @tertiary;
+    color: @tertiary;
 }
-
-#battery.warning:not(.charging) {
-  color: @error;
+#battery.warning:not(.charging),
+#battery.critical:not(.charging) {
+    color: @error;
+}
+#network.disconnected,
+#pulseaudio.muted,
+#bluetooth.disabled,
+#bluetooth.off {
+    color: @outline;
 }
 
 /* --- Power Button --- */
 #custom-power {
-  color: @error;
-  font-size: 16px;
-  margin-left: 10px;
-  padding-right: 12px;
+    min-width: 28px;
+    min-height: 28px;
+    padding: 0;
+    margin: 6px 0 6px 4px;
+    border-radius: 7px;
+    background-color: @primary;
+    color: @on_primary;
+    font-size: 16px;
+    transition: all 0.13s;
+}
+
+#custom-power:hover {
+    background-color: @secondary;
+    color: @on_secondary;
+}
+
+/* --- Tooltips --- */
+tooltip {
+    background: @surface_container_highest;
+    border: 1px solid @outline;
+    border-radius: 12px;
+}
+tooltip label {
+    color: @on_surface;
 }
