@@ -30,3 +30,12 @@ source ~/vulkan/setup-env.sh
 
 # Starship prompt
 eval "$(starship init zsh)"
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/bibinuz/.local/bin:$PATH"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/bibinuz/.lmstudio/bin"
+# End of LM Studio CLI section
+
