@@ -7,4 +7,4 @@ if [ -z "$URL" ]; then
   exit 1
 fi
 
-nohup chromium --app="$URL"
+nohup helium-browser --app="$URL"

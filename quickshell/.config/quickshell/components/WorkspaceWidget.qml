@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import Quickshell.Io
 import Quickshell.Hyprland
 import QtQuick
@@ -13,6 +15,7 @@ RowLayout {
 
         Rectangle {
             id: wsPill
+            required property var modelData
             property bool isActive: modelData.active
             property bool hasWindows: modelData.clientCount > 0
 

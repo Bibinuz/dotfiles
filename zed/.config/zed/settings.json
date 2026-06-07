@@ -14,6 +14,10 @@
       "type": "registry"
     },
     "opencode": {
+      "default_config_options": {
+        "effort": "max",
+        "model": "opencode/deepseek-v4-flash-free"
+      },
       "type": "registry"
     },
     "qwen-code": {
@@ -23,6 +27,7 @@
       "type": "registry"
     },
     "gemini": {
+      "default_model": "gemini-3-flash-preview",
       "default_mode": "default",
       "type": "registry"
     }

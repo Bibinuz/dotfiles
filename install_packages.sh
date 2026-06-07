@@ -38,6 +38,8 @@ packages_official=(
 	linux-headers
 	quickshell
 	matugen
+	helium-browser-bin
+	waterfox-bin
 )
 
 packages_aur=(
@@ -46,7 +48,6 @@ packages_aur=(
 	ttf-font-awesome
 	wlogout
 	localsend
-	waterfox-bin
 	xpadneo-dkms
 	aether
 	wlctl-bin

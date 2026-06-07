@@ -6,6 +6,7 @@ import QtQuick.Layouts
 PopupWindow {
     id: popup
     property var theme
+    property var shellRoot
 
     implicitWidth: 180
     implicitHeight: powerMenuCol.implicitHeight + 16
@@ -13,18 +14,12 @@ PopupWindow {
     visible: false
     grabFocus: true
 
-    Process { id: logoutProc;  command: ["hyprctl", "dispatch", "exit"] }
-    Process { id: restartProc; command: ["systemctl", "reboot"] }
-    Process { id: poweroffProc; command: ["systemctl", "poweroff"] }
-    Process { id: suspendProc; command: ["systemctl", "suspend"] }
-    Process { id: lockProc;    command: ["hyprlock"] }
-
     Rectangle {
         anchors.fill: parent
         anchors.topMargin: 6
-        color: popup.theme.surface_container_high
+        color: popup.theme ? popup.theme.surface_container_high : "#252b29"
         radius: 12
-        border.color: popup.theme.outline_variant
+        border.color: popup.theme ? popup.theme.outline_variant : "#3f4945"
         border.width: 1
 
         ColumnLayout {
@@ -39,34 +34,50 @@ PopupWindow {
                 icon: "󰌾"
                 text: "Lock"
                 theme: popup.theme
-                onClicked: { popup.visible = false; lockProc.running = true }
+                onClicked: {
+                    popup.visible = false
+                    if (popup.shellRoot && popup.shellRoot.lockProc)
+                        popup.shellRoot.lockProc.running = true
+                }
             }
 
             PopupMenuItem {
                 icon: "󰤄"
                 text: "Suspend"
                 theme: popup.theme
-                onClicked: { popup.visible = false; suspendProc.running = true }
+                onClicked: {
+                    popup.visible = false
+                    if (popup.shellRoot && popup.shellRoot.suspendProc)
+                        popup.shellRoot.suspendProc.running = true
+                }
             }
 
             PopupMenuItem {
                 icon: "󰗽"
                 text: "Logout"
                 theme: popup.theme
-                onClicked: { popup.visible = false; logoutProc.running = true }
+                onClicked: {
+                    popup.visible = false
+                    if (popup.shellRoot && popup.shellRoot.logoutProc)
+                        popup.shellRoot.logoutProc.running = true
+                }
             }
 
             PopupMenuItem {
                 icon: "󰑐"
                 text: "Reboot"
                 theme: popup.theme
-                onClicked: { popup.visible = false; restartProc.running = true }
+                onClicked: {
+                    popup.visible = false
+                    if (popup.shellRoot && popup.shellRoot.restartProc)
+                        popup.shellRoot.restartProc.running = true
+                }
             }
 
             Rectangle {
                 Layout.fillWidth: true
                 Layout.preferredHeight: 1
-                color: popup.theme.outline_variant
+                color: popup.theme ? popup.theme.outline_variant : "#3f4945"
                 opacity: 0.5
                 Layout.topMargin: 2
                 Layout.bottomMargin: 2
@@ -76,7 +87,11 @@ PopupWindow {
                 icon: "󰐥"
                 text: "Power Off"
                 theme: popup.theme
-                onClicked: { popup.visible = false; poweroffProc.running = true }
+                onClicked: {
+                    popup.visible = false
+                    if (popup.shellRoot && popup.shellRoot.poweroffProc)
+                        popup.shellRoot.poweroffProc.running = true
+                }
                 Layout.bottomMargin: 6
             }
         }

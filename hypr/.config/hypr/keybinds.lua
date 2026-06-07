@@ -11,7 +11,7 @@ end
 exec_cmd(Main .. "+ return", Terminal)
 exec_cmd(Main .. "+ space", "pkill " .. MenuApp .. " || " .. Menu)
 exec_cmd(Main .. "+ B", "pkill " .. Bar .. " || " .. Bar)
-exec_cmd(Main .. "+ SHIFT + space", "~/.config/rofi/wallpaper-gallery.sh")
+exec_cmd(Main .. "+ SHIFT + space", "quickshell ipc call wallpaper toggle")
 exec_cmd(Main .. "+ SHIFT + F", FileManager)
 exec_cmd(Main .. "+ SHIFT + T", TextEditor)
 exec_cmd(Main .. "+ SHIFT + B", Browser)

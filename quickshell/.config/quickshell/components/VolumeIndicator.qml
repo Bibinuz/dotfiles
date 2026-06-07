@@ -1,3 +1,5 @@
+pragma ComponentBehavior: Bound
+
 import Quickshell.Services.Pipewire
 import QtQuick
 import QtQuick.Layouts
@@ -14,7 +16,7 @@ Item {
         id: volumeBg
         anchors.fill: parent
         radius: 8
-        color: root.theme.surface_container
+        color: root.theme.secondary
         opacity: volumeHover.containsMouse ? 1.0 : 0.0
         Behavior on opacity { NumberAnimation { duration: 120 } }
     }
@@ -34,9 +36,12 @@ Item {
                 if (v > 0.33) return "󰖀"
                 return "󰕿"
             }
-            color: (Pipewire.defaultAudioSink && Pipewire.defaultAudioSink.audio && Pipewire.defaultAudioSink.audio.muted)
+            color: volumeHover.containsMouse ? root.theme.on_secondary : (
+                (Pipewire.defaultAudioSink && Pipewire.defaultAudioSink.audio && Pipewire.defaultAudioSink.audio.muted)
                 ? root.theme.outline : root.theme.primary
+            )
             font.pixelSize: 15
+            Behavior on color { ColorAnimation { duration: 150 } }
         }
 
         Text {
@@ -44,9 +49,10 @@ Item {
             text: Pipewire.defaultAudioSink && Pipewire.defaultAudioSink.audio
                 ? Math.round(Pipewire.defaultAudioSink.audio.volume * 100) + "%"
                 : "0%"
-            color: root.theme.on_surface
+            color: volumeHover.containsMouse ? root.theme.on_secondary : root.theme.on_surface
             font.pixelSize: 12
             font.weight: Font.Medium
+            Behavior on color { ColorAnimation { duration: 150 } }
         }
     }
 
