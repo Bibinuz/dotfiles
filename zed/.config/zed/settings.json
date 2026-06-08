@@ -27,8 +27,8 @@
       "type": "registry"
     },
     "gemini": {
-      "default_model": "gemini-3-flash-preview",
-      "default_mode": "default",
+      "default_model": "gemini-3.1-pro-preview",
+      "default_mode": "yolo",
       "type": "registry"
     }
   },

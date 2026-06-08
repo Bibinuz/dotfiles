@@ -7,6 +7,10 @@ arguments = ["img"]
 input_path = './templates/hyprland-colors.lua'
 output_path = '~/.config/hypr/colors.lua'
 
+[templates.hyprlock]
+input_path = './templates/hyprland-colors.conf'
+output_path = '~/.config/hypr/colors.conf'
+
 [templates.kitty]
 input_path = './templates/kitty-colors.conf'
 output_path = '~/.config/kitty/colors.conf'

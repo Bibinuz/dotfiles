@@ -26,7 +26,7 @@ PanelWindow {
     IpcHandler {
         target: "wallpaper"
         function toggle() {
-            wallpaperMenuLoader.active = !wallpaperMenuLoader.active
+            wallpaperMenuPopup.visible = !wallpaperMenuPopup.visible
         }
     }
 
@@ -121,7 +121,7 @@ PanelWindow {
                     iconText: "󰸉"
                     labelText: ""
                     iconColor: theme.primary
-                    onClicked: wallpaperMenuLoader.active = !wallpaperMenuLoader.active
+                    onClicked: wallpaperMenuPopup.visible = !wallpaperMenuPopup.visible
                 }
 
                 // Separator before power
@@ -143,30 +143,34 @@ PanelWindow {
                     hoverColor: theme.error
                     hoverIconColor: theme.on_error
                     theme: theme
-                    onClicked: powerMenuLoader.active = !powerMenuLoader.active
+                    onClicked: powerMenuPopup.visible = !powerMenuPopup.visible
                 }
             }
         }
     }
 
     // ── Power Menu Popup ──────────────────────────────────────────────────────
-    Loader {
-        id: powerMenuLoader
-        active: false
-        sourceComponent: PowerMenuPopup {
-            theme: root.theme_obj
-            shellRoot: root
-            anchor.window: root
-            anchor.rect.x: root.width - 180 - 14
-            anchor.rect.y: 40
-            anchor.rect.width: 180
-            anchor.rect.height: 0
-            visible: true
-            onVisibleChanged: if (!visible) powerMenuLoader.active = false
-        }
+    PowerMenuPopup {
+        id: powerMenuPopup
+        theme: root.theme_obj
+        shellRoot: root
+        anchor.window: root
+        anchor.rect.x: root.width - 180 - 14
+        anchor.rect.y: 40
+        anchor.rect.width: 180
+        anchor.rect.height: 0
+        visible: false
     }
+
     // Helper to expose theme as a property
     property alias theme_obj: theme
+
+    property alias applyWallpaperProc: applyWallpaperProc
+    property alias logoutProc: logoutProc
+    property alias restartProc: restartProc
+    property alias poweroffProc: poweroffProc
+    property alias suspendProc: suspendProc
+    property alias lockProc: lockProc
 
     Process { id: applyWallpaperProc }
     Process { id: logoutProc;    command: ["hyprctl", "dispatch", "exit"] }
@@ -176,20 +180,16 @@ PanelWindow {
     Process { id: lockProc;      command: ["hyprlock"] }
 
     // ── Wallpaper Gallery Popup ───────────────────────────────────────────────
-    Loader {
-        id: wallpaperMenuLoader
-        active: false
-        sourceComponent: WallpaperGalleryPopup {
-            theme: root.theme_obj
-            shellRoot: root
-            anchor.window: root
-            anchor.rect.x: (root.width - width) / 2
-            anchor.rect.y: (Screen.height - height) / 2
-            anchor.rect.width: width
-            anchor.rect.height: 0
-            visible: true
-            onVisibleChanged: if (!visible) wallpaperMenuLoader.active = false
-        }
+    WallpaperGalleryPopup {
+        id: wallpaperMenuPopup
+        theme: root.theme_obj
+        shellRoot: root
+        anchor.window: root
+        anchor.rect.x: (root.width - width) / 2
+        anchor.rect.y: (Screen.height - height) / 2
+        anchor.rect.width: width
+        anchor.rect.height: 0
+        visible: false
     }
 
     // ── Auto Reload Watcher ───────────────────────────────────────────────────

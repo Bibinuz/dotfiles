@@ -61,15 +61,15 @@ RowLayout {
                 cursorShape: Qt.PointingHandCursor
                 onClicked: {
                     var wsNum = modelData.name
-                    switchWsProc.command = ["hyprctl", "dispatch", "workspace", wsNum]
+                    switchWsProc.command = ["hyprctl", "dispatch", "hl.dsp.focus({ workspace = '" + wsNum + "' })"]
                     switchWsProc.running = true
                 }
             }
-        }
-    }
 
-    Process {
-        id: switchWsProc
-        command: ["hyprctl", "dispatch", "workspace", "1"]
+            Process {
+                id: switchWsProc
+                command: ["hyprctl", "dispatch", "hl.dsp.focus({ workspace = '1' })"]
+            }
+        }
     }
 }
