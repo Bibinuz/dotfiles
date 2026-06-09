@@ -25,6 +25,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "100"
 vim.opt.showmatch = true
 vim.opt.cmdheight = 1
+vim.opt.showtabline = 2
 vim.opt.completeopt = "menuone,noinsert,noselect"
 vim.opt.showmode = false
 vim.opt.pumheight = 10

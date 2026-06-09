@@ -22,8 +22,22 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Half page up (centered)" })
 vim.keymap.set("x", "<leader>p", '"_dP', { desc = "Paste without yanking" })
 vim.keymap.set({ "n", "v" }, "<leader>x", '"_d', { desc = "Delete without yanking" })
 
-vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Next buffer" })
-vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Previous buffer" })
+vim.keymap.set("n", "<leader>bl", ":bnext<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "<leader>bh", ":bprevious<CR>", { desc = "Previous buffer" })
+vim.keymap.set("n", "<leader>bc", function()
+	local bd = require("mini.bufremove").delete
+	if vim.bo.modified then
+		local choice = vim.fn.confirm(("Save changes to %q?"):format(vim.fn.bufname()), "&Yes\n&No\n&Cancel")
+		if choice == 1 then
+			vim.cmd.write()
+			bd(0, false)
+		elseif choice == 2 then
+			bd(0, true)
+		end
+	else
+		bd(0, false)
+	end
+end, { desc = "Close current buffer" })
 
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left window/pane" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move to bottom window/pane" })
@@ -41,7 +55,6 @@ vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
 vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
 vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 
-
 vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
 vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
 
@@ -53,6 +66,6 @@ vim.keymap.set("n", "<leader>pa", function() -- show file path
 	print("file:", path)
 end, { desc = "Copy full file path" })
 
-vim.keymap.set("n", "<leader>td", function()
+vim.keymap.set("n", "<leader>ut", function()
 	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { desc = "Toggle diagnostics" })

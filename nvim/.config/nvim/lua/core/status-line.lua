@@ -1,19 +1,19 @@
- -- ==================
- -- STATUSLINE
- -- ==================
+-- ==================
+-- STATUSLINE
+-- ==================
 
 local cached_branch = ""
 local last_check = 0
 local function git_branch()
-  local now = vim.loop.now()
-  if now - last_check > 5000 then
-    cached_branch = vim.fn.system("git branch --show-current 2>/dev/null | tr -d '\n'")
-    last_check = now
-  end
-  if cached_branch ~= "" then
-    return " \u{e725}" .. cached_branch .. " "
-  end
-  return ""
+	local now = vim.loop.now()
+	if now - last_check > 5000 then
+		cached_branch = vim.fn.system("git branch --show-current 2>/dev/null | tr -d '\n'")
+		last_check = now
+	end
+	if cached_branch ~= "" then
+		return " \u{e725}" .. cached_branch .. " "
+	end
+	return ""
 end
 
 local function file_type()
@@ -57,26 +57,26 @@ local function file_type()
 		svelte = "\u{e697} ",
 		astro = "\u{e628} ",
 	}
-  if ft == "" then
-    return " \u{f15b} "
-  end
-  return ((icons[ft] or "\u{f15b} ") .. ft)
+	if ft == "" then
+		return " \u{f15b} "
+	end
+	return ((icons[ft] or "\u{f15b} ") .. ft)
 end
 
 local function file_size()
-  local size = vim.fn.getfsize(vim.fn.expand("%"))
-  if size < 0 then
-    return ""
-  end
-  local size_str
-  if size < 1024 then
-    size_str = size .. "B"
-  elseif size < 1024 * 1024 then
-    size_str = string.format("%.1fK", size/1024)
-  else
-    size_str = string.format("%.1fM", size/1024/1024)
-  end
-  return " \u{f016} " .. size_str .. " "
+	local size = vim.fn.getfsize(vim.fn.expand("%"))
+	if size < 0 then
+		return ""
+	end
+	local size_str
+	if size < 1024 then
+		size_str = size .. "B"
+	elseif size < 1024 * 1024 then
+		size_str = string.format("%.1fK", size / 1024)
+	else
+		size_str = string.format("%.1fM", size / 1024 / 1024)
+	end
+	return " \u{f016} " .. size_str .. " "
 end
 
 local function mode_icon()
