@@ -1,34 +1,33 @@
-require("vim-options")
-require("keymaps")
-require("cmds")
+require("core.vim-options")
+require("core.status-line")
+require("core.keymaps")
+require("core.autocmds")
+require("core.float-term")
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+require("plugins")
+
+vim.opt.termguicolors = true
+vim.cmd.colorscheme("catppuccin")
+
+local function set_transparent()
+	local groups = {
+		"Normal",
+		"NormalNC",
+		"EndOfBuffer",
+		"NormalFloat",
+		"FloatBorder",
+		"SignColumn",
+		"StatusLine",
+		"StatulsLineNC",
+		"TabLine",
+		"TabLineFill",
+		"TabLineSel",
+		"ColorColumn",
+	}
+	for _, g in ipairs(groups) do
+		vim.api.nvim_set_hl(0, g, { bg = "none" })
+	end
+	vim.api.nvim_set_hl(0, "TabLineFill", { bg = "none", fg = "#767676" })
 end
-vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
-  spec = {
-    { import = "plugins" }, -- loads all plugins in plugins/
-  },
-  defaults = {
-    lazy = false, -- plugins are not lazy loaded by default
-  },
-})
-
-vim.diagnostic.config({
-  virtual_text = true,
-  virtual_lines = { current_line = true },
-  underline = true,
-  update_in_insert = false
-})
-vim.opt.swapfile = false
-
+set_transparent()
