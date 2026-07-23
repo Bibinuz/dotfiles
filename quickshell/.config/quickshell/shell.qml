@@ -30,6 +30,13 @@ PanelWindow {
         }
     }
 
+    IpcHandler {
+        target: "launcher"
+        function toggle() {
+            appLauncherPopup.visible = !appLauncherPopup.visible
+        }
+    }
+
     // ── Global Functions ──────────────────────────────────────────────────────
     function applyWallpaper(path) {
         console.log("Shell: Applying wallpaper:", path);
@@ -178,6 +185,14 @@ PanelWindow {
     Process { id: poweroffProc;  command: ["systemctl", "poweroff"] }
     Process { id: suspendProc;   command: ["systemctl", "suspend"] }
     Process { id: lockProc;      command: ["hyprlock"] }
+
+    // ── App Launcher Popup ───────────────────────────────────────────────────
+    AppLauncherPopup {
+        id: appLauncherPopup
+        theme: root.theme_obj
+        shellRoot: root
+        visible: false
+    }
 
     // ── Wallpaper Gallery Popup ───────────────────────────────────────────────
     WallpaperGalleryPopup {

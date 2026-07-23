@@ -9,7 +9,7 @@ require("apps.app")
 
 Terminal = "kitty"
 FileManager = "nautilus"
-Menu = "rofi -show drun"
+Menu = "quickshell ipc call launcher toggle"
 TextEditor = "gedit"
 Browser = "waterfox"
 Bar = "quickshell"
