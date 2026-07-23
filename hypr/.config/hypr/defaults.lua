@@ -3,8 +3,8 @@
 
 Terminal = "kitty"
 FileManager = "nautilus"
-MenuApp = "rofi"
-Menu = "rofi -show drun"
+MenuApp = "quickshell"
+Menu = "quickshell ipc call launcher toggle"
 TextEditor = "gedit"
 Browser = "waterfox"
 Bar = "quickshell"

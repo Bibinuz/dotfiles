@@ -9,7 +9,7 @@ end
 -- Open apps
 
 exec_cmd(Main .. "+ return", Terminal)
-exec_cmd(Main .. "+ space", "pkill " .. MenuApp .. " || " .. Menu)
+exec_cmd(Main .. "+ space", Menu)
 exec_cmd(Main .. "+ B", "pkill " .. Bar .. " || " .. Bar)
 exec_cmd(Main .. "+ SHIFT + space", "quickshell ipc call wallpaper toggle")
 exec_cmd(Main .. "+ SHIFT + F", FileManager)
