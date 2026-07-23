@@ -39,3 +39,8 @@ export PATH="/home/bibinuz/.local/bin:$PATH"
 export PATH="$PATH:/home/bibinuz/.lmstudio/bin"
 # End of LM Studio CLI section
 
+# Minecraft Server Shortcuts
+alias minecraft-start="systemctl --user start minecraft"
+alias minecraft-stop="systemctl --user stop minecraft"
+alias minecraft-status="systemctl --user status minecraft"
+alias minecraft-console="tmux -L minecraft attach -t minecraft"
