@@ -16,6 +16,7 @@ function M.setup()
 	local shfmt = require("efmls-configs.formatters.shfmt")
 
 	local cpplint = require("efmls-configs.linters.cpplint")
+	cpplint.lintCommand = cpplint.lintCommand:gsub('"%$%{INPUT%}"', '--filter=-whitespace "${INPUT}"')
 	local clangfmt = require("efmls-configs.formatters.clang_format")
 
 	local go_revive = require("efmls-configs.linters.go_revive")
