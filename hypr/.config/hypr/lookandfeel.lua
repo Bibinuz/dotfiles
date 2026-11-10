@@ -10,7 +10,7 @@ hl.config({
         resize_on_border = true,
         gaps_in          = 1,
         gaps_out         = 0,
-        layout           = "scrolling",
+        layout           = "dwindle",
         allow_tearing    = false,
     },
 

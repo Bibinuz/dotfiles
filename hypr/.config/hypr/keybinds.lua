@@ -16,6 +16,7 @@ exec_cmd(Main .. "+ SHIFT + F", FileManager)
 exec_cmd(Main .. "+ SHIFT + T", TextEditor)
 exec_cmd(Main .. "+ SHIFT + B", Browser)
 exec_cmd(Main .. "+ SHIFT + S", "steam")
+exec_cmd(Main .. "+ P", "prismlauncher")
 exec_cmd(Main .. "+ SHIFT + CONTROL + S", "spotify-launcher")
 
 exec_cmd(Main .. "+ SHIFT + A", "~/.config/hypr/scripts/launch-webapp.sh \"https://gemini.google.com\"")
